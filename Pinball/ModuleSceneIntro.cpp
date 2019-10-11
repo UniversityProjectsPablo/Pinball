@@ -29,6 +29,7 @@ bool ModuleSceneIntro::Start()
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+	background = App->textures->Load("Assets/Sprites/background.png");
 
 	// TODO: Homework - create a sensor
 
@@ -46,6 +47,8 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update()
 {
+	SDL_Rect back;
+	App->renderer->Blit(background, 0, 0, &back);
 	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		ray_on = !ray_on;
@@ -122,7 +125,7 @@ update_status ModuleSceneIntro::Update()
 		int x, y;
 		c->data->GetPosition(x, y);
 		if(c->data->Contains(App->input->GetMouseX(), App->input->GetMouseY()))
-			App->renderer->Blit(circle, x, y, NULL, 1.0f, c->data->GetRotation());
+			//App->renderer->Blit(circle, x, y, NULL, 1.0f, c->data->GetRotation());
 		c = c->next;
 	}
 
@@ -132,7 +135,7 @@ update_status ModuleSceneIntro::Update()
 	{
 		int x, y;
 		c->data->GetPosition(x, y);
-		App->renderer->Blit(box, x, y, NULL, 1.0f, c->data->GetRotation());
+		//App->renderer->Blit(box, x, y, NULL, 1.0f, c->data->GetRotation());
 		if(ray_on)
 		{
 			int hit = c->data->RayCast(ray.x, ray.y, mouse.x, mouse.y, normal.x, normal.y);
@@ -148,7 +151,7 @@ update_status ModuleSceneIntro::Update()
 	{
 		int x, y;
 		c->data->GetPosition(x, y);
-		App->renderer->Blit(rick, x, y, NULL, 1.0f, c->data->GetRotation());
+		//App->renderer->Blit(rick, x, y, NULL, 1.0f, c->data->GetRotation());
 		c = c->next;
 	}
 
