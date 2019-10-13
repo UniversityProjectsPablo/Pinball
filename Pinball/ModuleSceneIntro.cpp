@@ -29,6 +29,7 @@ bool ModuleSceneIntro::Start()
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+
 	background = App->textures->Load("Assets/Sprites/background.png");
 
 	// TODO: Homework - create a sensor
@@ -44,11 +45,17 @@ bool ModuleSceneIntro::CleanUp()
 	return true;
 }
 
+update_status ModuleSceneIntro::PreUpdate()
+{
+	App->renderer->Blit(background, 0, 0);
+
+	return UPDATE_CONTINUE;
+}
+
 // Update: draw background
 update_status ModuleSceneIntro::Update()
 {
-	SDL_Rect back;
-	App->renderer->Blit(background, 0, 0, &back);
+	
 	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		ray_on = !ray_on;
@@ -151,6 +158,9 @@ update_status ModuleSceneIntro::Update()
 	{
 		int x, y;
 		c->data->GetPosition(x, y);
+		
+		//SDL_Rect back;		
+		//App->renderer->Blit(background, x, y, NULL, 1.0f, c->data->GetRotation());
 		//App->renderer->Blit(rick, x, y, NULL, 1.0f, c->data->GetRotation());
 		c = c->next;
 	}

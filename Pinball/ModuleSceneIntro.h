@@ -13,6 +13,7 @@ public:
 	~ModuleSceneIntro();
 
 	bool Start();
+	update_status PreUpdate();
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
@@ -28,7 +29,9 @@ public:
 	SDL_Texture* circle;
 	SDL_Texture* box;
 	SDL_Texture* rick;
-	SDL_Texture* background;
+
+	SDL_Texture* background = nullptr;
+
 	uint bonus_fx;
 	p2Point<int> ray;
 	bool ray_on;
