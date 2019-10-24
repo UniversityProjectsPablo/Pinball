@@ -3,6 +3,7 @@
 #include "p2List.h"
 #include "p2Point.h"
 #include "Globals.h"
+#include "animation.h"
 
 class PhysBody;
 
@@ -28,4 +29,9 @@ public:
 	uint bonus_fx;
 	p2Point<int> ray;
 	bool ray_on;
+
+	SDL_Texture* elements = nullptr;
+	Animation spring_relaxation;
+	Animation spring_compression;
+
 };

@@ -70,6 +70,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ModuleFont.h" />

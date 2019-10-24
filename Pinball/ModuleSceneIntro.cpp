@@ -27,7 +27,28 @@ bool ModuleSceneIntro::Start()
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
+	// Loading the Background 
 	background = App->textures->Load("Assets/Sprites/background.png");
+
+	// Loading the elements (flickers, bouncepads, etc)   
+
+	elements = App->textures->Load("Assets/Sprites/elements.png");
+	
+	// ----------------------------- ANIMATIONS --------------------------------------------
+
+
+	spring_compression.PushBack({ 30, 5, 27, 86 });
+	spring_compression.PushBack({ 57, 5, 27, 86 });
+	spring_compression.PushBack({ 84, 5, 27, 86 });
+	spring_compression.PushBack({ 111, 5, 27, 86 });
+	spring_compression.PushBack({ 138, 5, 27, 86 });
+	spring_compression.speed = 0.2f;
+	spring_compression.loop = false;
+
+
+	spring_relaxation.PushBack({ 3, 5, 27, 86 });
+	spring_relaxation.speed = 0.2f;
+
 
 	return ret;
 }
@@ -79,6 +100,19 @@ update_status ModuleSceneIntro::Update()
 		if(normal.x != 0.0f)
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
+
+	// spring animation ---------------
+
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) != KEY_REPEAT)
+	{
+		App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_relaxation.GetCurrentFrame()), 0.01f);
+		spring_compression.Reset();
+	}
+	else
+	{
+		App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_compression.GetCurrentFrame()), 0.01f);
+	}
+
 
 	return UPDATE_CONTINUE;
 }
