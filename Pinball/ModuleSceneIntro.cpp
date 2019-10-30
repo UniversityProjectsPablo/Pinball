@@ -10,6 +10,8 @@
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	//Load animations 
+
+	//Spring compression
 	spring_compression.PushBack({ 30, 5, 27, 86 });
 	spring_compression.PushBack({ 57, 5, 27, 86 });
 	spring_compression.PushBack({ 84, 5, 27, 86 });
@@ -18,16 +20,29 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	spring_compression.speed = 0.2f;
 	spring_compression.loop = false;
 
+	//Spring relaxation
 	spring_relaxation.PushBack({ 3, 5, 27, 86 });
 	spring_relaxation.speed = 0.2f;
-
-	flipper_left.PushBack({84,112,91,65}); //Left flipper	
+	
+	//Flipper left
+	flipper_left.PushBack({50,138,100,22}); //Left flipper	
+	flipper_left.PushBack({50,184,92,42}); //Left flipper	
 	flipper_left.speed = 0.2f;
 	flipper_left.loop = false;
 
-	flipper_right.PushBack({ 139,188,91,65 }); //Right flipper
+	//Flipper left relaxation
+	flipper_left_relaxation.PushBack({ 50,93,90,44 });
+	flipper_left_relaxation.speed = 0.2f;
+
+	//Flipper right
+	flipper_right.PushBack({ 153,138,97,22 }); //Right flipper
+	flipper_right.PushBack({ 159,183,91,44 }); //Right flipper
 	flipper_right.speed = 0.2f;
 	flipper_right.loop = false;
+
+	//Flipper right relaxation
+	flipper_right_relaxation.PushBack({ 159,93,91,44 });
+	flipper_right_relaxation.speed = 0.2f;
 
 	ray_on = false;
 	sensed = false;
@@ -120,28 +135,27 @@ update_status ModuleSceneIntro::Update()
 	else
 	{
 		App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_compression.GetCurrentFrame()), 0.01f);
-		//App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(flipper_left.GetCurrentFrame()), 0.01f);
 	}
 
 	//Left flipper
-	if(App->input->GetKey(SDL_SCANCODE_LEFT != KEY_REPEAT))
+	if(App->input->GetKey(SDL_SCANCODE_LEFT) != KEY_REPEAT)
 	{
-		App->renderer->Blit(elements, SCREEN_WIDTH * 0.3, SCREEN_HEIGHT * 0.9, &(flipper_left.GetCurrentFrame()), 0.01f);
+		App->renderer->Blit(elements, SCREEN_WIDTH * 0.3, SCREEN_HEIGHT * 0.9, &(flipper_left_relaxation.GetCurrentFrame()), 0.01f);
 		flipper_left.Reset();
 	}else
 	{
-		App->renderer->Blit(elements, SCREEN_WIDTH * 0.3, SCREEN_HEIGHT * 0.9, &(flipper_left.GetCurrentFrame()), 0.01f);
+		App->renderer->Blit(elements, SCREEN_WIDTH * 0.3, SCREEN_HEIGHT * 0.88, &(flipper_left.GetCurrentFrame()), 0.01f);
 	}
 
 	//Right flipper
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT != KEY_REPEAT))
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) != KEY_REPEAT)
 	{
-		App->renderer->Blit(elements, SCREEN_WIDTH * 0.505, SCREEN_HEIGHT * 0.9, &(flipper_right.GetCurrentFrame()), 0.01f);
+		App->renderer->Blit(elements, SCREEN_WIDTH * 0.500, SCREEN_HEIGHT * 0.898, &(flipper_right_relaxation.GetCurrentFrame()), 0.01f);
 		flipper_right.Reset();
 	}
 	else
 	{
-		App->renderer->Blit(elements, SCREEN_WIDTH * 0.505, SCREEN_HEIGHT * 0.9, &(flipper_right.GetCurrentFrame()), 0.01f);
+		App->renderer->Blit(elements, SCREEN_WIDTH * 0.50, SCREEN_HEIGHT * 0.879, &(flipper_right.GetCurrentFrame()), 0.01f);
 	}
 
 

@@ -27,7 +27,9 @@ public:
 	Animation spring_relaxation;
 	Animation spring_compression;
 	Animation flipper_left;
+	Animation flipper_left_relaxation;
 	Animation flipper_right;
+	Animation flipper_right_relaxation;
 
 	SDL_Texture* background = nullptr;
 	SDL_Texture* elements = nullptr;
