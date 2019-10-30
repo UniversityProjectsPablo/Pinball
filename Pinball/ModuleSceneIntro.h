@@ -24,14 +24,16 @@ public:
 	PhysBody* sensor;
 	bool sensed;
 
+	Animation spring_relaxation;
+	Animation spring_compression;
+	Animation flipper_left;
+	Animation flipper_right;
+
 	SDL_Texture* background = nullptr;
+	SDL_Texture* elements = nullptr;
 
 	uint bonus_fx;
 	p2Point<int> ray;
 	bool ray_on;
-
-	SDL_Texture* elements = nullptr;
-	Animation spring_relaxation;
-	Animation spring_compression;
 
 };
