@@ -70,6 +70,7 @@ bool ModuleSceneIntro::Start()
 	
 	// ----------------------------- ANIMATIONS --------------------------------------------
 	
+	circles.add(App->physics->CreateCircle(SCREEN_WIDTH * 0.577, SCREEN_HEIGHT * 0.4, 7));
 
 	return ret;
 }
@@ -94,8 +95,7 @@ update_status ModuleSceneIntro::PreUpdate()
 
 // Update: draw background
 update_status ModuleSceneIntro::Update()
-{
-	
+{		
 	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		ray_on = !ray_on;

@@ -20,7 +20,7 @@ public:
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 public:
-
+	p2List<PhysBody*> circles;
 	PhysBody* sensor;
 	bool sensed;
 
