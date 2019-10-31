@@ -49,12 +49,13 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
 	shape.m_radius = PIXEL_TO_METERS(radius);
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
-	fixture.density = 1.0f;
+	fixture.density = 0.5f;
 
 	b->CreateFixture(&fixture);
 
 	PhysBody* pbody = new PhysBody();
 	pbody->body = b;
+	b->SetUserData(pbody);
 	pbody->width = pbody->height = radius;
 
 	return pbody;
