@@ -18,14 +18,15 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
-	
+
 	//Load ball texture
 	ball_texture = App->textures->Load("Assets/Sprites/ball.png");
 
 	//We load the ball
 	int initial_x = SCREEN_WIDTH * 0.577;
 	int initial_y = SCREEN_HEIGHT * 0.5;
-	ball = App->physics->CreateCircle(initial_x, initial_y, 7);
+	LOG("SCREEN_WIDTH * 0.577 %f", SCREEN_WIDTH * 0.577);
+	ball = App->physics->createCircle(initial_x, initial_y, 7);
 
 	return true;
 }
@@ -42,11 +43,11 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	if(ball != nullptr)
+	if (ball != nullptr)
 	{
 		int pos_x;
 		int pos_y;
-
+		LOG("Update %f", SCREEN_WIDTH * 0.577);
 		ball->GetPosition(pos_x, pos_y);
 		App->renderer->Blit(ball_texture, pos_x, pos_y);
 	}

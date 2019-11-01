@@ -1,4 +1,4 @@
-﻿#include "Globals.h"
+#include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
@@ -23,7 +23,7 @@ bool ModuleUI::Start()
 	LOG("Loading UI textures");
 	bool ret = true;
 
-	font_id = App->font->Load("Assets/Sprites/Font.png", "0123456789 ", 1);	
+	font_id = App->font->Load("Assets/Sprites/Font.png", "0123456789 ", 1);
 	points = 000000;
 	balls = 0;
 
@@ -38,23 +38,23 @@ bool ModuleUI::CleanUp()
 	return true;
 }
 
-update_status ModuleUI:: Update()
+update_status ModuleUI::Update()
 {
 	//Render
 	Points();
 	Balls();
-	
+
 	return UPDATE_CONTINUE;
 }
 
 
-void ModuleUI::Points() 
-{	
-	App->font->BlitText(SCREEN_WIDTH / 8, SCREEN_HEIGHT/40, font_id,"00000000");
+void ModuleUI::Points()
+{
+	App->font->BlitText(SCREEN_WIDTH / 8, SCREEN_HEIGHT / 40, font_id, "00000000");
 
 
 	// if (      )
-	
+
 }
 
 void ModuleUI::Balls()

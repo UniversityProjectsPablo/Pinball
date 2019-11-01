@@ -38,9 +38,9 @@ public:
 	uint timenow;
 
 	bool ScoreAdded = false;
-	uint aux=0;
+	uint aux = 0;
 
-	
+
 };
 
 #endif // _MODULEUI_H

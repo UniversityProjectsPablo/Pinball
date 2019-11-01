@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
+#include <utility>
 #include "Box2D/Box2D/Box2D.h"
 
 #define GRAVITY_X 0.0f
@@ -12,6 +13,9 @@
 #define METERS_TO_PIXELS(m) ((int) floor(PIXELS_PER_METER * m))
 #define PIXEL_TO_METERS(p)  ((float) METER_PER_PIXEL * p)
 
+class b2World;
+class b2Body;
+
 // Small class to return to other modules to track position and rotation of physics bodies
 class PhysBody
 {
@@ -19,7 +23,7 @@ public:
 	PhysBody() : body(NULL)
 	{}
 
-	void GetPosition(int& x, int &y) const;
+	void GetPosition(int& x, int& y) const;
 	float GetRotation() const;
 	bool Contains(int x, int y) const;
 	int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
@@ -28,7 +32,6 @@ public:
 	int width, height;
 	b2Body* body;
 };
-
 
 class ModulePhysics : public Module
 {
@@ -40,12 +43,11 @@ public:
 	update_status PreUpdate();
 	update_status PostUpdate();
 	bool CleanUp();
-
-	PhysBody* CreateCircle(int x, int y, int radius);
-	PhysBody* CreateRectangle(int x, int y, int width, int height);
-	PhysBody* CreateRectangleSensor(int x, int y, int width, int height);
-	PhysBody* CreateChain(int x, int y, int* points, int size);
-
+	
+	PhysBody* createCircle(int x, int y, int radiusL);
+	PhysBody* createRectangle(int x, int y, int width, int height);
+	PhysBody* createRectangleSensor(int x, int y, int width, int height);
+	PhysBody* createChain(int x, int y, int* points, int size);
 private:
 
 	bool debug;

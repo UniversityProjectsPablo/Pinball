@@ -56,14 +56,14 @@
     <ClInclude Include="ModulePhysics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ModuleUI.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="animation.h">
-      <Filter>Header Files\Containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

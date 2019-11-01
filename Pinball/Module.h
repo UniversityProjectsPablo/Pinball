@@ -3,7 +3,6 @@
 #include "Globals.h"
 
 class Application;
-class PhysBody;
 
 class Module
 {
@@ -71,5 +70,4 @@ public:
 	{ 
 		return true; 
 	}
-
 };

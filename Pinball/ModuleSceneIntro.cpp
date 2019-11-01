@@ -23,8 +23,8 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	//Spring relaxation
 	spring_relaxation.PushBack({ 3, 5, 27, 86 });
 	spring_relaxation.speed = 0.2f;
-	
-	
+
+
 
 	ray_on = false;
 	sensed = false;
@@ -49,7 +49,7 @@ bool ModuleSceneIntro::Start()
 	// Loading the elements (flickers, bouncepads, etc)   
 
 	elements = App->textures->Load("Assets/Sprites/elements.png");
-	
+
 	return ret;
 }
 
@@ -73,16 +73,16 @@ update_status ModuleSceneIntro::PreUpdate()
 
 // Update: draw background
 update_status ModuleSceneIntro::Update()
-{		
-	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+{
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		ray_on = !ray_on;
 		ray.x = App->input->GetMouseX();
 		ray.y = App->input->GetMouseY();
-	}	
+	}
 
 	// Prepare for raycast ------------------------------------------------------
-	
+
 	iPoint mouse;
 	mouse.x = App->input->GetMouseX();
 	mouse.y = App->input->GetMouseY();
@@ -91,15 +91,15 @@ update_status ModuleSceneIntro::Update()
 	fVector normal(0.0f, 0.0f);
 
 	// ray -----------------
-	if(ray_on == true)
+	if (ray_on == true)
 	{
-		fVector destination(mouse.x-ray.x, mouse.y-ray.y);
+		fVector destination(mouse.x - ray.x, mouse.y - ray.y);
 		destination.Normalize();
 		destination *= ray_hit;
 
 		App->renderer->DrawLine(ray.x, ray.y, ray.x + destination.x, ray.y + destination.y, 255, 255, 255);
 
-		if(normal.x != 0.0f)
+		if (normal.x != 0.0f)
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
 

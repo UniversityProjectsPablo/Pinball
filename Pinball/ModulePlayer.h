@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleTextures.h"
+#include "ModulePhysics.h"
 
 class ModulePlayer : public Module
 {
@@ -14,12 +15,10 @@ public:
 	update_status Update();
 	bool CleanUp();
 
-
-	
 private:
 	PhysBody* ball;
 	SDL_Texture* ball_texture;
-
+	
 	int initial_x;
 	int initial_y;
 };

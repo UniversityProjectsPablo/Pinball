@@ -24,7 +24,7 @@ public:
 	{}
 
 	// Math ------------------------------------------------
-	p2Point operator -(const p2Point &v) const
+	p2Point operator -(const p2Point& v) const
 	{
 		p2Point<TYPE> r;
 
@@ -34,7 +34,7 @@ public:
 		return(r);
 	}
 
-	p2Point operator + (const p2Point &v) const
+	p2Point operator + (const p2Point& v) const
 	{
 		p2Point<TYPE> r;
 
@@ -44,7 +44,7 @@ public:
 		return(r);
 	}
 
-	const p2Point& operator -=(const p2Point &v)
+	const p2Point& operator -=(const p2Point& v)
 	{
 		x -= v.x;
 		y -= v.y;
@@ -52,7 +52,7 @@ public:
 		return(*this);
 	}
 
-	const p2Point& operator +=(const p2Point &v)
+	const p2Point& operator +=(const p2Point& v)
 	{
 		x += v.x;
 		y += v.y;
@@ -96,7 +96,7 @@ public:
 		TYPE fx = x - v.x;
 		TYPE fy = y - v.y;
 
-		return (TYPE) sqrtf(float((fx*fx) + (fy*fy)));
+		return (TYPE)sqrtf(float((fx * fx) + (fy * fy)));
 	}
 };
 
@@ -114,13 +114,13 @@ public:
 	p2Vector(const p2Point& p) : p2Point(p)
 	{}
 
-	p2Vector(TYPE x, TYPE y) : p2Point(x,y)
+	p2Vector(TYPE x, TYPE y) : p2Point(x, y)
 	{}
 
 	void Normalize()
 	{
 		float m = x * x + y * y;
-		if(m > 0.0f)
+		if (m > 0.0f)
 		{
 			float inv_m = 1 / sqrtf(m);
 			x *= inv_m;
@@ -130,7 +130,7 @@ public:
 
 	float Length() const
 	{
-		return sqrtf(float((x*x) + (y*y)));
+		return sqrtf(float((x * x) + (y * y)));
 	}
 
 	p2Vector operator -(const TYPE v) const
