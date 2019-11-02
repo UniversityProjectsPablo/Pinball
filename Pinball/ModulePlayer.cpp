@@ -26,7 +26,6 @@ bool ModulePlayer::Start()
 	initial_x = SCREEN_WIDTH -27;
 	initial_y = SCREEN_HEIGHT -200;
 	ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
-	ball = App->physics->createCircle(560, 500, ball_radius, b2_dynamicBody);
 
 	return true;
 }
