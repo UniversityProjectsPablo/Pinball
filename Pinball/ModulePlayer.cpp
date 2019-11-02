@@ -25,7 +25,7 @@ bool ModulePlayer::Start()
 	initial_x = SCREEN_WIDTH -27;
 	initial_y = SCREEN_HEIGHT -300;
 	LOG("SCREEN_WIDTH * 0.577 %f", SCREEN_WIDTH * 0.577);
-	ball = App->physics->createCircle(initial_x, initial_y, ball_radius);
+	ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
 
 	return true;
 }
@@ -61,7 +61,7 @@ update_status ModulePlayer::Update()
 			}
 			else //You are alive, take another opportunity!
 			{
-				ball = App->physics->createCircle(initial_x, initial_y, ball_radius);
+				ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
 			}
 		}
 	}

@@ -58,7 +58,32 @@ bool ModuleSceneIntro::Start()
 	
 	game_over_scene = App->textures->Load("Assets/Sprites/game_over.png");
 
+	//Joints
+	b2RevoluteJointDef flipper_joint_def_right;
+	b2RevoluteJointDef flipper_joint_def_left;
+	b2RevoluteJoint* flipper_joint_right;
+	b2RevoluteJoint* flipper_joint_left;
+
+	//Flipper colliders
+	flipper_left = App->physics->createRectangle(242, 984,100,25, b2_dynamicBody);
+	flipper_right = App->physics->createRectangle(372, 984,100,25, b2_dynamicBody);
 	
+	flipper_left_joint = App->physics->createCircle(242, 984,5, b2_staticBody);
+	flipper_right_joint = App->physics->createCircle(372, 984,5, b2_staticBody);
+	
+	flipper_joint_def_right.Initialize(flipper_right->body, flipper_right_joint->body, flipper_right_joint->body->GetWorldCenter());
+	flipper_joint_def_left.Initialize(flipper_left->body, flipper_left_joint->body, flipper_left_joint->body->GetWorldCenter());
+
+	flipper_joint_def_right.lowerAngle = -0.12f * b2_pi;
+	flipper_joint_def_right.upperAngle = 0.25f * b2_pi;
+	flipper_joint_def_left.lowerAngle = -0.12f * b2_pi;
+	flipper_joint_def_left.upperAngle = 0.25f * b2_pi;
+
+	flipper_joint_def_right.enableLimit = true;
+	flipper_joint_def_left.enableLimit = true;
+
+	flipper_joint_right = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipper_joint_def_right);
+	flipper_joint_left = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipper_joint_def_left);
 	
 	return ret;
 }
@@ -68,9 +93,18 @@ bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
 	sensor = nullptr;
+
 	background = nullptr;
 	spring = nullptr;
 	game_over_scene = nullptr;
+
+
+	App->textures->Unload(background);
+	App->textures->Unload(spring);
+	App->textures->Unload(game_over_scene);
+	App->textures->Unload(flipper_left_tex);
+	App->textures->Unload(flipper_right_tex);
+
 
 	return true;
 }
@@ -133,6 +167,22 @@ update_status ModuleSceneIntro::Update()
 		{
 			App->renderer->Blit(spring, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_compression.GetCurrentFrame()), 0.01f);
 		}
+
+		//Blit flippers
+
+		if(flipper_left != NULL)
+		{
+			int x, y;
+			flipper_left->GetPosition(x, y);
+			App->renderer->Blit(flipper_left_tex, x, y, NULL, 0.2f, flipper_left->GetRotation());
+		}
+		if (flipper_right != NULL)
+		{
+			int x, y;
+			flipper_right->GetPosition(x, y);
+			App->renderer->Blit(flipper_right_tex, x, y, NULL, 0.2f, flipper_right->GetRotation());
+		}
+
 	}else if(game_over == true)
 	{
 		LOG("aqui");

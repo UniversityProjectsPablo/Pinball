@@ -44,12 +44,14 @@ public:
 	update_status PostUpdate();
 	bool CleanUp();
 	
-	PhysBody* createCircle(int x, int y, int radiusL);
-	PhysBody* createRectangle(int x, int y, int width, int height);
-	PhysBody* createRectangleSensor(int x, int y, int width, int height);
+	PhysBody* createCircle(int x, int y, int radius, b2BodyType body_type);
+	PhysBody* createRectangle(int x, int y, int width, int height, b2BodyType body_type);
+	PhysBody* createRectangleSensor(int x, int y, int width, int height, b2BodyType body_type);
 	PhysBody* createChain(int x, int y, int* points, int size);
+
+	b2World* world;
 private:
 
 	bool debug;
-	b2World* world;
+
 };
