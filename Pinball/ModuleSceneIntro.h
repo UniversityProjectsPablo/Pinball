@@ -19,6 +19,7 @@ public:
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 	void Shape_Map();
+	void restartGame();
 
 public:
 	p2List<PhysBody*> circles;
@@ -34,7 +35,9 @@ public:
 
 	SDL_Texture* background = nullptr;
 	SDL_Texture* elements = nullptr;
-	SDL_Texture* game_over = nullptr;
+	SDL_Texture* game_over_scene = nullptr;
+
+	bool game_over = false;
 
 	SDL_Texture* circle;
 	SDL_Texture* box;

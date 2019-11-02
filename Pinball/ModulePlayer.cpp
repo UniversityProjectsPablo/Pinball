@@ -4,10 +4,10 @@
 #include "ModulePhysics.h"
 #include "ModuleRender.h"
 #include "ModuleUI.h"
+#include "ModuleSceneIntro.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	ball_out = false;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -49,36 +49,22 @@ update_status ModulePlayer::Update()
 
 		ball->GetPosition(pos_x, pos_y);
 		App->renderer->Blit(ball_texture, pos_x, pos_y);
-	
+
 		//Ball is out of the map
 		if (pos_y >= SCREEN_HEIGHT)
 		{
-			if (health == 0) 
-			{
-
+			health--;
+			if (health <= 0) //Oups, you lost!
+			{				
+				LOG("You lost!");
+				App->scene_intro->game_over = true; //It will change scene from game to game_over
 			}
-			else {
-				if (health == 1) //Oups, you lost!
-				{
-					health--;
-					//TODO: What happens when you die?
-					LOG("You lost!");
-
-				}
-				else //You are alive, take another opportunity!
-				{
-					health--;
-					ball = App->physics->createCircle(initial_x, initial_y, ball_radius);
-				}
-
+			else //You are alive, take another opportunity!
+			{
+				ball = App->physics->createCircle(initial_x, initial_y, ball_radius);
 			}
 		}
 	}
-
-	if(ball_out)
-	{
-		
-	}	
 
 	return UPDATE_CONTINUE;
 }
@@ -86,4 +72,24 @@ update_status ModulePlayer::Update()
 int ModulePlayer::Get_health()
 {
 	return health;
+}
+
+int ModulePlayer::Get_score()
+{
+	return score;
+}
+
+void ModulePlayer::changeHealth(int newValue)
+{
+	health = newValue;
+}
+
+void ModulePlayer::updateScore(int addScore)
+{
+	score += addScore;
+}
+
+void ModulePlayer::resetScore()
+{
+	score = 0;
 }

@@ -15,7 +15,11 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void changeHealth(int newValue);
+	void updateScore(int addScore);
+	void resetScore();
 	int Get_health();
+	int Get_score();
 	
 
 private:
@@ -26,6 +30,7 @@ private:
 	int initial_y;
 	int ball_radius = 7;
 	int health = 5;
+	int score = 0;
 
-	bool ball_out; //Ball has fallen below the ground
+	bool game_over = false;
 };

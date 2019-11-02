@@ -6,7 +6,7 @@
 #include "ModuleUI.h"
 #include "ModuleInput.h"
 #include "ModulePlayer.h"
-
+#include "ModuleSceneIntro.h"
 
 #include "SDL/include/SDL.h"
 
@@ -38,9 +38,12 @@ bool ModuleUI::CleanUp()
 
 update_status ModuleUI::Update()
 {
-	//Render
-	Points();
-	Balls();
+	//Render if we are on game
+	if (App->scene_intro->game_over == false)
+	{
+		Points();
+		Balls();
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -48,7 +51,7 @@ update_status ModuleUI::Update()
 
 void ModuleUI::Points()
 {
-	points = 0;
+	points = App->player->Get_score();
 	char temp[10];
 	_itoa_s(points, temp, 10);
 
