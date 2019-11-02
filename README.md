@@ -14,7 +14,7 @@
   * Round system
   * Game over implementation
   * Spring forces at start
-  * Teleport when you enter a hole
+  * Teleport when the ball enters a hole
 * Xavier Trillo: https://github.com/xatrilu
   * Rip map and elements
   * Map collisions
