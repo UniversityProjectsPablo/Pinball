@@ -13,7 +13,6 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	
 	circle = box = chain = NULL;
 	
-	
 	// ----------------------------- ANIMATIONS --------------------------------------------
 
 	//Spring compression
@@ -51,15 +50,15 @@ bool ModuleSceneIntro::Start()
 
 	// Loading the Background 
 	background = App->textures->Load("Assets/Sprites/background.png");
-
-	// Loading the elements (flickers, bouncepads, etc)   
-
+	
+	// Loading the elements (flippers, bouncepads, etc)   
 	elements = App->textures->Load("Assets/Sprites/elements.png");
-
-	// Loading the final message_
-
+	flipper_left_tex = App->textures->Load("Assets/Sprites/flipper_left.png");
+	flipper_right_tex = App->textures->Load("Assets/Sprites/flipper_right.png");
+	
 	game_over_scene = App->textures->Load("Assets/Sprites/game_over.png");
 
+	
 	
 	return ret;
 }

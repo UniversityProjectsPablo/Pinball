@@ -25,10 +25,14 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> chains;
+
 	PhysBody* sensor;
+	bool sensed;
+
 	PhysBody* flipper_left;
 	PhysBody* flipper_right;
-	bool sensed;
+	PhysBody* flipper_left_joint;
+	PhysBody* flipper_right_joint;
 
 	Animation spring_relaxation;
 	Animation spring_compression;
@@ -36,6 +40,8 @@ public:
 	SDL_Texture* background = nullptr;
 	SDL_Texture* elements = nullptr;
 	SDL_Texture* game_over_scene = nullptr;
+	SDL_Texture* flipper_left_tex = nullptr;
+	SDL_Texture* flipper_right_tex = nullptr;
 
 	bool game_over = false;
 
