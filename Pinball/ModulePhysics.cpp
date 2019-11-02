@@ -90,7 +90,7 @@ PhysBody* ModulePhysics::createRectangle(int x, int y, int width, int height)
 PhysBody* ModulePhysics::createChain(int x, int y, int* points, int size)
 {
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = b2_staticBody;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	b2Body* b = world->CreateBody(&body);
@@ -115,6 +115,7 @@ PhysBody* ModulePhysics::createChain(int x, int y, int* points, int size)
 
 	PhysBody* pbody = new PhysBody();
 	pbody->body = b;
+	b->SetUserData(pbody);
 	pbody->width = pbody->height = 0;
 
 	return pbody;
@@ -177,7 +178,7 @@ update_status ModulePhysics::PostUpdate()
 				{
 					v = b->GetWorldPoint(shape->m_vertices[i]);
 					if (i > 0)
-						App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
+						/*App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);*/
 					prev = v;
 				}
 

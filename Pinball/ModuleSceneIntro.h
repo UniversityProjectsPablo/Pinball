@@ -18,9 +18,12 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
+	void Shape_Map();
 
 public:
 	p2List<PhysBody*> circles;
+	p2List<PhysBody*> boxes;
+	p2List<PhysBody*> chains;
 	PhysBody* sensor;
 	PhysBody* flipper_left;
 	PhysBody* flipper_right;
@@ -32,6 +35,10 @@ public:
 	SDL_Texture* background = nullptr;
 	SDL_Texture* elements = nullptr;
 	SDL_Texture* game_over = nullptr;
+
+	SDL_Texture* circle;
+	SDL_Texture* box;
+	SDL_Texture* chain;
 
 	uint bonus_fx;
 	p2Point<int> ray;
