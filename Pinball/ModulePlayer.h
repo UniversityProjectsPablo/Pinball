@@ -30,7 +30,7 @@ private:
 	int initial_y;
 	int ball_radius = 7;
 	int health = 5;
-	int score = 0;
+	int score = 000000;
 
 	bool game_over = false;
 };
