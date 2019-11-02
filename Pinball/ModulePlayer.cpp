@@ -26,6 +26,7 @@ bool ModulePlayer::Start()
 	initial_x = SCREEN_WIDTH -27;
 	initial_y = SCREEN_HEIGHT -200;
 	ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
+	ball = App->physics->createCircle(560, 500, ball_radius, b2_dynamicBody);
 
 	return true;
 }
@@ -86,6 +87,8 @@ update_status ModulePlayer::Update()
 			App->scene_intro->flipper_left->body->ApplyTorque(-60.0f, true);
 		else
 			App->scene_intro->flipper_left->body->ApplyTorque(15.0f, true);
+	
+		teleport(); //We teleport the ball if it enters the hole
 	}
 
 	return UPDATE_CONTINUE;
@@ -114,4 +117,18 @@ void ModulePlayer::updateScore(int addScore)
 void ModulePlayer::resetScore()
 {
 	score = 0;
+}
+
+void ModulePlayer::teleport()
+{
+	int x, y;
+	ball->GetPosition(x,y);
+
+	if(x > 550 && x < 580)
+		if(y > 625 && y < 650)
+		{ 
+			//Ball is inside the hole area. So we teleport it to the other hole
+			ball = nullptr; //We delete the current ball
+			ball = App->physics->createCircle(25, 100, ball_radius, b2_dynamicBody); //We create a new ball, simulating a teleport
+		}
 }

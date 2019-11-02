@@ -19,7 +19,7 @@ public:
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 	void Shape_Map();
-	void restartGame();
+	void restartGame();	
 
 public:
 	p2List<PhysBody*> circles;

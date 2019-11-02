@@ -5,11 +5,20 @@
 
 ## Controls
 * Left/Right arrows to move flippers
-* Space button to throw the ball from the start position.
+* Down arrow to move the spring and throw the ball.
 
 ## Team
 * Pablo Galve: https://github.com/pablogalve
+ * Rip music and FX
+ * Flippers 
+ * Round system
+ * Game over implementation
+ * Spring forces at start
+ * Teleport when you enter a hole
 * Xavier Trillo: https://github.com/xatrilu
+ * Rip map and elements
+ * Map collisions
+ * UI showing score and lives 
 
 ## Link to github repository
 https://github.com/UniversityProjectsPablo/Pinball
@@ -20,7 +29,7 @@ https://www.classicgame.com/game/Pinball
 ## License
 MIT License
 
-Copyright (c) 2019 Bernat-Pablo
+Copyright (c) 2019 Pinball
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

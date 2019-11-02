@@ -20,7 +20,7 @@ public:
 	void resetScore();
 	int Get_health();
 	int Get_score();
-	
+	void teleport(); //teleport the ball from one hole to another
 
 private:
 	PhysBody* ball;

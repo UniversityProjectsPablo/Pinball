@@ -649,3 +649,4 @@ void ModuleSceneIntro::restartGame()
 	App->player->changeHealth(5);
 	App->player->resetScore();
 }
+
