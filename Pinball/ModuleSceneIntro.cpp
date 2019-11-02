@@ -98,13 +98,11 @@ bool ModuleSceneIntro::CleanUp()
 	spring = nullptr;
 	game_over_scene = nullptr;
 
-
 	App->textures->Unload(background);
 	App->textures->Unload(spring);
 	App->textures->Unload(game_over_scene);
 	App->textures->Unload(flipper_left_tex);
 	App->textures->Unload(flipper_right_tex);
-
 
 	return true;
 }

@@ -24,8 +24,7 @@ bool ModulePlayer::Start()
 
 	//We load the ball
 	initial_x = SCREEN_WIDTH -27;
-	initial_y = SCREEN_HEIGHT -300;
-	LOG("SCREEN_WIDTH * 0.577 %f", SCREEN_WIDTH * 0.577);
+	initial_y = SCREEN_HEIGHT -200;
 	ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
 
 	return true;
@@ -48,7 +47,8 @@ update_status ModulePlayer::Update()
 	{
 		ball_launched = true;
 
-		b2Vec2 impulse = b2Vec2(0.0f, -5.0f);
+		b2Vec2 impulse = b2Vec2(0.0f, -1.0f);
+		
 		b2Vec2 point = ball->body->GetLocalCenter();
 		ball->body->ApplyLinearImpulse(impulse, point, true);
 	}
