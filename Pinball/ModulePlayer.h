@@ -19,6 +19,7 @@ public:
 	void updateScore(int addScore);
 	void resetScore();
 	int Get_health();
+	int Get_score();
 	
 
 private:

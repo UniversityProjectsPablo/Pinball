@@ -51,7 +51,7 @@ update_status ModuleUI::Update()
 
 void ModuleUI::Points()
 {
-	points = 0;
+	points = App->player->Get_score();
 	char temp[10];
 	_itoa_s(points, temp, 10);
 

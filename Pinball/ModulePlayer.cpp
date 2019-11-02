@@ -74,6 +74,11 @@ int ModulePlayer::Get_health()
 	return health;
 }
 
+int ModulePlayer::Get_score()
+{
+	return score;
+}
+
 void ModulePlayer::changeHealth(int newValue)
 {
 	health = newValue;
