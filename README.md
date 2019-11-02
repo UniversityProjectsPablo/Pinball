@@ -5,20 +5,20 @@
 
 ## Controls
 * Left/Right arrows to move flippers
-* Down arrow to move the spring and throw the ball.
+* Down arrow to move the spring and throw the ball at start.
 
 ## Team
 * Pablo Galve: https://github.com/pablogalve
- * Rip music and FX
- * Flippers 
- * Round system
- * Game over implementation
- * Spring forces at start
- * Teleport when you enter a hole
+  * Rip music and FX
+  * Flippers 
+  * Round system
+  * Game over implementation
+  * Spring forces at start
+  * Teleport when you enter a hole
 * Xavier Trillo: https://github.com/xatrilu
- * Rip map and elements
- * Map collisions
- * UI showing score and lives 
+  * Rip map and elements
+  * Map collisions
+  * UI showing score and lives 
 
 ## Link to github repository
 https://github.com/UniversityProjectsPablo/Pinball
