@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleUI.h"
 #include "ModuleInput.h"
-
+#include "ModulePlayer.h"
 
 
 #include "SDL/include/SDL.h"
@@ -24,8 +24,6 @@ bool ModuleUI::Start()
 	bool ret = true;
 
 	font_id = App->font->Load("Assets/Sprites/Font.png", "0123456789 ", 1);
-	points = 000000;
-	balls = 0;
 
 	return ret;
 }
@@ -50,16 +48,19 @@ update_status ModuleUI::Update()
 
 void ModuleUI::Points()
 {
-	App->font->BlitText(SCREEN_WIDTH / 8, SCREEN_HEIGHT / 40, font_id, "00000000");
+	points = 0;
+	char temp[10];
+	_itoa_s(points, temp, 10);
 
-
-	// if (      )
-
+	App->font->BlitText(SCREEN_WIDTH / 8, SCREEN_HEIGHT / 40, font_id, temp);
 }
 
 void ModuleUI::Balls()
 {
-	App->font->BlitText(SCREEN_WIDTH * 0.75, SCREEN_HEIGHT / 35, font_id, "0");
+	balls = App->player->Get_health();
+	char temp[10];
+	_itoa_s(balls, temp, 10);
 
-	// if (      )
+	App->font->BlitText(SCREEN_WIDTH * 0.75, SCREEN_HEIGHT / 35, font_id, temp);
+
 }

@@ -50,6 +50,10 @@ bool ModuleSceneIntro::Start()
 
 	elements = App->textures->Load("Assets/Sprites/elements.png");
 
+	// Loading the final message_
+
+	game_over = App->textures->Load("Assets/Sprites/game_over");
+
 	return ret;
 }
 
@@ -60,6 +64,7 @@ bool ModuleSceneIntro::CleanUp()
 	sensor = nullptr;
 	background = nullptr;
 	elements = nullptr;
+	game_over = nullptr;
 
 	return true;
 }

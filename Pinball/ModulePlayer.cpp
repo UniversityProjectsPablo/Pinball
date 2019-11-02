@@ -3,6 +3,7 @@
 #include "ModulePlayer.h"
 #include "ModulePhysics.h"
 #include "ModuleRender.h"
+#include "ModuleUI.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -52,14 +53,24 @@ update_status ModulePlayer::Update()
 		//Ball is out of the map
 		if (pos_y >= SCREEN_HEIGHT)
 		{
-			health--;
-			if (health <= 0) //Oups, you lost!
+			if (health == 0) 
 			{
-				//TODO: What happens when you die?
-				LOG("You lost!");
-			}else //You are alive, take another opportunity!
-			{
-				ball = App->physics->createCircle(initial_x, initial_y, ball_radius);
+
+			}
+			else {
+				if (health == 1) //Oups, you lost!
+				{
+					health--;
+					//TODO: What happens when you die?
+					LOG("You lost!");
+
+				}
+				else //You are alive, take another opportunity!
+				{
+					health--;
+					ball = App->physics->createCircle(initial_x, initial_y, ball_radius);
+				}
+
 			}
 		}
 	}
@@ -70,4 +81,9 @@ update_status ModulePlayer::Update()
 	}	
 
 	return UPDATE_CONTINUE;
+}
+
+int ModulePlayer::Get_health()
+{
+	return health;
 }

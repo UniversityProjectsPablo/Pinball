@@ -15,6 +15,9 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	int Get_health();
+	
+
 private:
 	PhysBody* ball;
 	SDL_Texture* ball_texture;
@@ -22,7 +25,7 @@ private:
 	int initial_x;
 	int initial_y;
 	int ball_radius = 7;
-	int health = 3;
+	int health = 5;
 
 	bool ball_out; //Ball has fallen below the ground
 };
