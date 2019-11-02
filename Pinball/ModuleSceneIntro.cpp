@@ -327,9 +327,9 @@ void ModuleSceneIntro::Shape_Map() {
 	450, 1080
 	};
 
-	int shape_1[64] = {
-	404, 967,
-	413, 964,
+	int shape_1[54] = {
+	416, 964,
+	431, 959,
 	451, 950,
 	475, 930,
 	492, 914,
@@ -353,45 +353,34 @@ void ModuleSceneIntro::Shape_Map() {
 	509, 947,
 	487, 966,
 	471, 976,
-	448, 988,
-	414, 1001,
-	412, 988,
-	417, 984,
-	416, 972,
-	411, 969,
-	406, 969
+	432, 993,
+	421, 968
 	};
 
-	int shape_2[58] = {
-	195, 1001,
-	158, 986,
+	int shape_2[46] = {
+	189, 963,
+	179, 996,
+	146, 980,
 	124, 968,
-	94, 942,
-	82, 919,
-	76, 893,
-	77, 849,
-	82, 829,
-	117, 750,
-	122, 749,
-	124, 751,
-	125, 758,
-	123, 770,
-	117, 787,
-	103, 818,
-	96, 848,
-	96, 872,
-	98, 883,
-	103, 896,
-	108, 905,
-	117, 915,
-	131, 929,
-	157, 948,
-	205, 966,
-	205, 969,
-	197, 971,
-	192, 978,
-	194, 986,
-	197, 992
+	107, 955,
+	89, 936,
+	80, 912,
+	76, 880,
+	77, 845,
+	103, 782,
+	118, 748,
+	124, 750,
+	126, 760,
+	120, 781,
+	109, 805,
+	97, 841,
+	96, 861,
+	98, 880,
+	102, 893,
+	107, 904,
+	118, 916,
+	144, 938,
+	166, 953
 	};
 
 	int shape_3[44] = {
@@ -644,8 +633,8 @@ void ModuleSceneIntro::Shape_Map() {
 	};
 
 	chains.add(App->physics->createChain(0, 0, map, 234));
-	chains.add(App->physics->createChain(0, 0, shape_1, 64));
-	chains.add(App->physics->createChain(0, 0, shape_2, 58));
+	chains.add(App->physics->createChain(0, 0, shape_1, 54));
+	chains.add(App->physics->createChain(0, 0, shape_2, 46));
 	chains.add(App->physics->createChain(0, 0, shape_3, 44));
 	chains.add(App->physics->createChain(0, 0, shape_4, 56));
 	chains.add(App->physics->createChain(0, 0, shape_5, 112));
