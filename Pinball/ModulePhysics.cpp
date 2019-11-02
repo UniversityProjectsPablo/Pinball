@@ -39,10 +39,10 @@ update_status ModulePhysics::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-PhysBody* ModulePhysics::createCircle(int x, int y, int radius)
+PhysBody* ModulePhysics::createCircle(int x, int y, int radius, b2BodyType body_type)
 {
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = body_type;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	b2Body* b = world->CreateBody(&body);
@@ -63,10 +63,10 @@ PhysBody* ModulePhysics::createCircle(int x, int y, int radius)
 	return pbody;
 }
 
-PhysBody* ModulePhysics::createRectangle(int x, int y, int width, int height)
+PhysBody* ModulePhysics::createRectangle(int x, int y, int width, int height, b2BodyType body_type)
 {
 	b2BodyDef body;
-	body.type = b2_dynamicBody;
+	body.type = body_type;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	b2Body* b = world->CreateBody(&body);
