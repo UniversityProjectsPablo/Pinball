@@ -43,6 +43,16 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	//Launch ball
+	if(ball_launched == false && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+	{
+		ball_launched = true;
+
+		b2Vec2 impulse = b2Vec2(0.0f, -5.0f);
+		b2Vec2 point = ball->body->GetLocalCenter();
+		ball->body->ApplyLinearImpulse(impulse, point, true);
+	}
+
 	if (ball != nullptr)
 	{
 		int pos_x;
@@ -55,9 +65,9 @@ update_status ModulePlayer::Update()
 		if (pos_y >= SCREEN_HEIGHT)
 		{
 			health--;
+			ball_launched = false;
 			if (health <= 0) //Oups, you lost!
-			{				
-				LOG("You lost!");
+			{								
 				App->scene_intro->game_over = true; //It will change scene from game to game_over
 			}
 			else //You are alive, take another opportunity!

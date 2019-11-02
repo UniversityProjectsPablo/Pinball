@@ -32,5 +32,6 @@ private:
 	int health = 5;
 	int score = 000000;
 
+	bool ball_launched = false;
 	bool game_over = false;
 };
