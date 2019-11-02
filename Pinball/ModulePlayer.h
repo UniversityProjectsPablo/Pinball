@@ -15,6 +15,9 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void changeHealth(int newValue);
+	void updateScore(int addScore);
+	void resetScore();
 	int Get_health();
 	
 
@@ -26,6 +29,7 @@ private:
 	int initial_y;
 	int ball_radius = 7;
 	int health = 5;
+	int score = 0;
 
 	bool game_over = false;
 };

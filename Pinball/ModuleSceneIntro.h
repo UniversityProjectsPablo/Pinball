@@ -18,7 +18,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
-
+	void restartGame();
 public:
 	p2List<PhysBody*> circles;
 	PhysBody* sensor;

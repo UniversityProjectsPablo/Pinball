@@ -73,3 +73,18 @@ int ModulePlayer::Get_health()
 {
 	return health;
 }
+
+void ModulePlayer::changeHealth(int newValue)
+{
+	health = newValue;
+}
+
+void ModulePlayer::updateScore(int addScore)
+{
+	score += addScore;
+}
+
+void ModulePlayer::resetScore()
+{
+	score = 0;
+}

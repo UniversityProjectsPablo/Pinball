@@ -72,13 +72,8 @@ update_status ModuleSceneIntro::PreUpdate()
 {
 	if(game_over == false)	
 		App->renderer->Blit(background, 0, 0);
-	else
+	else if(game_over == true)
 	{
-		//Unload assets
-		sensor = nullptr;
-		background = nullptr;
-		elements = nullptr;
-
 		//Change scene
 		App->renderer->Blit(game_over_scene, 0, 0);
 	}
@@ -89,46 +84,64 @@ update_status ModuleSceneIntro::PreUpdate()
 // Update: draw background
 update_status ModuleSceneIntro::Update()
 {
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	if(game_over == false)
 	{
-		ray_on = !ray_on;
-		ray.x = App->input->GetMouseX();
-		ray.y = App->input->GetMouseY();
-	}
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			ray_on = !ray_on;
+			ray.x = App->input->GetMouseX();
+			ray.y = App->input->GetMouseY();
+		}
 
-	// Prepare for raycast ------------------------------------------------------
+		// Prepare for raycast ------------------------------------------------------
 
-	iPoint mouse;
-	mouse.x = App->input->GetMouseX();
-	mouse.y = App->input->GetMouseY();
-	int ray_hit = ray.DistanceTo(mouse);
+		iPoint mouse;
+		mouse.x = App->input->GetMouseX();
+		mouse.y = App->input->GetMouseY();
+		int ray_hit = ray.DistanceTo(mouse);
 
-	fVector normal(0.0f, 0.0f);
+		fVector normal(0.0f, 0.0f);
 
-	// ray -----------------
-	if (ray_on == true)
+		// ray -----------------
+		if (ray_on == true)
+		{
+			fVector destination(mouse.x - ray.x, mouse.y - ray.y);
+			destination.Normalize();
+			destination *= ray_hit;
+
+			App->renderer->DrawLine(ray.x, ray.y, ray.x + destination.x, ray.y + destination.y, 255, 255, 255);
+
+			if (normal.x != 0.0f)
+				App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
+		}
+
+		// spring animation ---------------
+
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) != KEY_REPEAT)
+		{
+			App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_relaxation.GetCurrentFrame()), 0.01f);
+			spring_compression.Reset();
+		}
+		else
+		{
+			App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_compression.GetCurrentFrame()), 0.01f);
+		}
+	}else if(game_over == true)
 	{
-		fVector destination(mouse.x - ray.x, mouse.y - ray.y);
-		destination.Normalize();
-		destination *= ray_hit;
-
-		App->renderer->DrawLine(ray.x, ray.y, ray.x + destination.x, ray.y + destination.y, 255, 255, 255);
-
-		if (normal.x != 0.0f)
-			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
-	}
-
-	// spring animation ---------------
-
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) != KEY_REPEAT)
-	{
-		App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_relaxation.GetCurrentFrame()), 0.01f);
-		spring_compression.Reset();
-	}
-	else
-	{
-		App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_compression.GetCurrentFrame()), 0.01f);
+		LOG("aqui");
+		if(App->input->GetKey(SDL_SCANCODE_SPACE) || App->input->GetKey(SDL_SCANCODE_KP_ENTER))
+		{
+			LOG("dfasdfdas");
+			restartGame();
+		}
 	}
 
 	return UPDATE_CONTINUE;
+}
+
+void ModuleSceneIntro::restartGame()
+{
+	game_over = false;
+	App->player->changeHealth(5);
+	App->player->resetScore();
 }
