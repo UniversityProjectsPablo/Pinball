@@ -52,7 +52,7 @@ bool ModuleSceneIntro::Start()
 	background = App->textures->Load("Assets/Sprites/background.png");
 	
 	// Loading the elements (flippers, bouncepads, etc)   
-	elements = App->textures->Load("Assets/Sprites/elements.png");
+	spring = App->textures->Load("Assets/Sprites/spring.png");
 	flipper_left_tex = App->textures->Load("Assets/Sprites/flipper_left.png");
 	flipper_right_tex = App->textures->Load("Assets/Sprites/flipper_right.png");
 	
@@ -69,7 +69,7 @@ bool ModuleSceneIntro::CleanUp()
 	LOG("Unloading Intro scene");
 	sensor = nullptr;
 	background = nullptr;
-	elements = nullptr;
+	spring = nullptr;
 	game_over_scene = nullptr;
 
 	return true;
@@ -126,12 +126,12 @@ update_status ModuleSceneIntro::Update()
 
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) != KEY_REPEAT)
 		{
-			App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_relaxation.GetCurrentFrame()), 0.01f);
+			App->renderer->Blit(spring, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_relaxation.GetCurrentFrame()), 0.01f);
 			spring_compression.Reset();
 		}
 		else
 		{
-			App->renderer->Blit(elements, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_compression.GetCurrentFrame()), 0.01f);
+			App->renderer->Blit(spring, SCREEN_WIDTH * 0.9444, SCREEN_HEIGHT * 0.875, &(spring_compression.GetCurrentFrame()), 0.01f);
 		}
 	}else if(game_over == true)
 	{

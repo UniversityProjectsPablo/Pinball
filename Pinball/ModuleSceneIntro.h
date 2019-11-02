@@ -38,7 +38,7 @@ public:
 	Animation spring_compression;
 
 	SDL_Texture* background = nullptr;
-	SDL_Texture* elements = nullptr;
+	SDL_Texture* spring = nullptr;
 	SDL_Texture* game_over_scene = nullptr;
 	SDL_Texture* flipper_left_tex = nullptr;
 	SDL_Texture* flipper_right_tex = nullptr;

@@ -24,7 +24,6 @@ bool ModuleUI::Start()
 	bool ret = true;
 
 	font_id = App->font->Load("Assets/Sprites/Font.png", "0123456789 ", 1);
-
 	return ret;
 }
 
@@ -33,14 +32,18 @@ bool ModuleUI::CleanUp()
 	LOG("Unloading UI graphics");
 
 	App->font->UnLoad(font_id);
+
 	return true;
 }
 
 update_status ModuleUI::Update()
 {
 	//Render if we are on game
-	if (App->scene_intro->game_over == false)
+	if (App->scene_intro->game_over == true)
 	{
+		End_Screen_Points();
+	}
+	else {
 		Points();
 		Balls();
 	}
@@ -67,3 +70,12 @@ void ModuleUI::Balls()
 	App->font->BlitText(SCREEN_WIDTH * 0.75, SCREEN_HEIGHT / 35, font_id, temp);
 
 }
+
+void ModuleUI::End_Screen_Points()
+{
+	char temp[10];
+	_itoa_s(points, temp, 10);
+
+	App->font->BlitText(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, font_id, temp);
+}
+

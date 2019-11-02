@@ -23,8 +23,7 @@ public:
 
 	void Points();
 	void Balls();
-	void Result();
-	void showScreen(int x, int y, int num);
+	void End_Screen_Points();
 
 
 public:
