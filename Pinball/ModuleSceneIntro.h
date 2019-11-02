@@ -31,7 +31,9 @@ public:
 
 	SDL_Texture* background = nullptr;
 	SDL_Texture* elements = nullptr;
-	SDL_Texture* game_over = nullptr;
+	SDL_Texture* game_over_scene = nullptr;
+
+	bool game_over = false;
 
 	uint bonus_fx;
 	p2Point<int> ray;

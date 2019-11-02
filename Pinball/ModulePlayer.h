@@ -27,5 +27,5 @@ private:
 	int ball_radius = 7;
 	int health = 5;
 
-	bool ball_out; //Ball has fallen below the ground
+	bool game_over = false;
 };

@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
+#include "ModulePlayer.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -23,9 +24,7 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 	//Spring relaxation
 	spring_relaxation.PushBack({ 3, 5, 27, 86 });
 	spring_relaxation.speed = 0.2f;
-
-
-
+	
 	ray_on = false;
 	sensed = false;
 }
@@ -52,7 +51,7 @@ bool ModuleSceneIntro::Start()
 
 	// Loading the final message_
 
-	game_over = App->textures->Load("Assets/Sprites/game_over");
+	game_over_scene = App->textures->Load("Assets/Sprites/game_over.png");
 
 	return ret;
 }
@@ -64,14 +63,25 @@ bool ModuleSceneIntro::CleanUp()
 	sensor = nullptr;
 	background = nullptr;
 	elements = nullptr;
-	game_over = nullptr;
+	game_over_scene = nullptr;
 
 	return true;
 }
 
 update_status ModuleSceneIntro::PreUpdate()
 {
-	App->renderer->Blit(background, 0, 0);
+	if(game_over == false)	
+		App->renderer->Blit(background, 0, 0);
+	else
+	{
+		//Unload assets
+		sensor = nullptr;
+		background = nullptr;
+		elements = nullptr;
+
+		//Change scene
+		App->renderer->Blit(game_over_scene, 0, 0);
+	}
 
 	return UPDATE_CONTINUE;
 }
