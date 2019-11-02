@@ -65,19 +65,19 @@ bool ModuleSceneIntro::Start()
 	b2RevoluteJoint* flipper_joint_left;
 
 	//Flipper colliders
-	flipper_left = App->physics->createRectangle(242, 984,100,25, b2_dynamicBody);
-	flipper_right = App->physics->createRectangle(372, 984,100,25, b2_dynamicBody);
+	flipper_left = App->physics->createRectangle(242, 974,100,10, b2_dynamicBody);
+	flipper_right = App->physics->createRectangle(369, 974,100,10, b2_dynamicBody);
 	
-	flipper_left_joint = App->physics->createCircle(242, 984,5, b2_staticBody);
-	flipper_right_joint = App->physics->createCircle(372, 984,5, b2_staticBody);
+	flipper_left_joint = App->physics->createCircle(200, 974,5, b2_staticBody);
+	flipper_right_joint = App->physics->createCircle(403, 974,5, b2_staticBody);
 	
 	flipper_joint_def_right.Initialize(flipper_right->body, flipper_right_joint->body, flipper_right_joint->body->GetWorldCenter());
 	flipper_joint_def_left.Initialize(flipper_left->body, flipper_left_joint->body, flipper_left_joint->body->GetWorldCenter());
 
-	flipper_joint_def_right.lowerAngle = -0.12f * b2_pi;
-	flipper_joint_def_right.upperAngle = 0.25f * b2_pi;
-	flipper_joint_def_left.lowerAngle = -0.12f * b2_pi;
-	flipper_joint_def_left.upperAngle = 0.25f * b2_pi;
+	flipper_joint_def_right.lowerAngle = -0.2f * b2_pi;
+	flipper_joint_def_right.upperAngle = 0.2f * b2_pi;
+	flipper_joint_def_left.lowerAngle = -0.2f * b2_pi;
+	flipper_joint_def_left.upperAngle = 0.2f * b2_pi;
 
 	flipper_joint_def_right.enableLimit = true;
 	flipper_joint_def_left.enableLimit = true;

@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleUI.h"
 #include "ModuleSceneIntro.h"
+#include "ModuleInput.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -64,6 +65,17 @@ update_status ModulePlayer::Update()
 				ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
 			}
 		}
+
+		//Flippers
+		if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)		
+			App->scene_intro->flipper_right->body->ApplyTorque(60.0f, true);
+		else
+			App->scene_intro->flipper_right->body->ApplyTorque(-15.0f, true);
+
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+			App->scene_intro->flipper_left->body->ApplyTorque(-60.0f, true);
+		else
+			App->scene_intro->flipper_left->body->ApplyTorque(15.0f, true);
 	}
 
 	return UPDATE_CONTINUE;
