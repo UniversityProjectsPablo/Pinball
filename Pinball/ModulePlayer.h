@@ -14,7 +14,6 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-
 	
 	int Get_health();
 	int Get_score();

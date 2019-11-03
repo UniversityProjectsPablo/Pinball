@@ -43,6 +43,8 @@ bool ModuleAudio::Init()
 		//ret = false;
 	}
 
+	PlayMusic("Assets/audio/background_music.ogg");
+
 	return ret;
 }
 
