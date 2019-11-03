@@ -18,7 +18,7 @@
 class PhysBody
 {
 public:
-	PhysBody() : body(NULL)
+	PhysBody() : listener(NULL), body(NULL)
 	{}
 
 	void GetPosition(int& x, int& y) const;
@@ -26,12 +26,14 @@ public:
 	bool Contains(int x, int y) const;
 	int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
 
+	void BeginContact(b2Contact* contact);
 public:
 	int width, height;
 	b2Body* body;
+	Module* listener;
 };
 
-class ModulePhysics : public Module
+class ModulePhysics : public Module, public b2ContactListener
 {
 public:
 	ModulePhysics(Application* app, bool start_enabled = true);
@@ -47,6 +49,8 @@ public:
 	PhysBody* createCircleSensor(int x, int y, int radius);
 	PhysBody* createRectangleSensor(int x, int y, int width, int height);
 	PhysBody* createChain(int x, int y, int* points, int size);
+
+	void BeginContact(b2Contact* contact);
 
 	b2World* world;
 	
