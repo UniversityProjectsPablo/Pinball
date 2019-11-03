@@ -696,6 +696,7 @@ void ModuleSceneIntro::restartGame()
 void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	bool green_light = false;
+	bool red_light = false;
 
 	//We check if we have touched a green light
 	if (bodyA == green_light1)
@@ -711,9 +712,34 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	if (bodyA == green_light6)
 		green_light = true;
 
+	//We check if we have collided with a red light
+	if (bodyA == red_light1)
+		red_light = true;
+	if (bodyA == red_light2)
+		red_light = true;
+	if (bodyA == red_light3)
+		red_light = true;
+	if (bodyA == red_light4)
+		red_light = true;
+	if (bodyA == red_light5)
+		red_light = true;
+	if (bodyA == red_light6)
+		red_light = true;
+	if (bodyA == red_light7)
+		red_light = true;
+	if (bodyA == red_light8)
+		red_light = true;
+	if (bodyA == red_light9)
+		red_light = true;
+
 	if(green_light == true)
 	{
 		App->player->updateScore(10); //We add x points
+		App->audio->PlayFx(App->audio->points);
+	}
+	if (red_light == true)
+	{
+		App->player->updateScore(30); //We add x points
 		App->audio->PlayFx(App->audio->points);
 	}
 }
