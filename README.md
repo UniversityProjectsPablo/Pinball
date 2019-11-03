@@ -6,6 +6,7 @@
 ## Controls
 * Left/Right arrows to move flippers
 * Down arrow to move the spring and throw the ball at start.
+* Space to restart game (When you are on game over screen)
 
 ## Debug Features
 * F1: All of the Shapes are Drawn
