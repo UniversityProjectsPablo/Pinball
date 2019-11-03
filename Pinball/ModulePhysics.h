@@ -46,7 +46,8 @@ public:
 	
 	PhysBody* createCircle(int x, int y, int radius, b2BodyType body_type);
 	PhysBody* createRectangle(int x, int y, int width, int height, b2BodyType body_type);
-	PhysBody* createRectangleSensor(int x, int y, int width, int height, b2BodyType body_type);
+	PhysBody* createCircleSensor(int x, int y, int radius);
+	PhysBody* createRectangleSensor(int x, int y, int width, int height);
 	PhysBody* createChain(int x, int y, int* points, int size);
 
 	b2World* world;

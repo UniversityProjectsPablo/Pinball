@@ -86,6 +86,8 @@ bool ModuleSceneIntro::Start()
 	flipper_joint_right = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipper_joint_def_right);
 	flipper_joint_left = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipper_joint_def_left);
 	
+	
+
 	return ret;
 }
 
