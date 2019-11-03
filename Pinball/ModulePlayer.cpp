@@ -45,8 +45,6 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
-		App->scene_intro->game_over = true;
 
 	//Launch ball
 	if(ball_launched == false && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)

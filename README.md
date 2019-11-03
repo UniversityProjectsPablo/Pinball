@@ -9,8 +9,7 @@
 * Space to restart game (When you are on game over screen)
 
 ## Debug Features
-* F1: All of the Shapes are Drawn
-* F2: Go to Game Over screen
+* F1: All the Shapes are Drawn
 
 ## Team
 * Pablo Galve: https://github.com/pablogalve
@@ -25,6 +24,7 @@
   * Rip map and elements
   * Map collisions
   * UI showing score and lives 
+  * F1: All the Shapes are Drawn
 
 ## Link to github repository
 https://github.com/UniversityProjectsPablo/Pinball
