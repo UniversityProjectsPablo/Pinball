@@ -6,6 +6,7 @@
 #include "ModuleUI.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleInput.h"
+#include "ModuleAudio.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -45,6 +46,7 @@ update_status ModulePlayer::Update()
 	//Launch ball
 	if(ball_launched == false && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
 	{
+		App->audio->PlayFx(App->audio->push_ball, 0);
 		ball_launched = true;
 
 		b2Vec2 impulse = b2Vec2(0.0f, -1.0f);

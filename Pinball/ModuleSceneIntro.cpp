@@ -696,5 +696,6 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	if(green_light == true)
 	{
 		App->player->updateScore(10); //We add x points
+		App->audio->PlayFx(App->audio->points);
 	}
 }

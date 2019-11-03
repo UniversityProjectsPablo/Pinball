@@ -9,7 +9,7 @@
 
 ## Team
 * Pablo Galve: https://github.com/pablogalve
-  * Rip music and FX
+  * Music and FX
   * Flippers 
   * Round system
   * Game over implementation
