@@ -15,12 +15,18 @@ public:
 	update_status Update();
 	bool CleanUp();
 
-	void changeHealth(int newValue);
-	void updateScore(int addScore);
-	void resetScore();
+	
 	int Get_health();
 	int Get_score();
+	int Get_PrevScore();
+	int Get_Highscore();
 	void teleport(); //teleport the ball from one hole to another
+	void changeHealth(int newValue);
+	void changePrevScore(int newValue);
+	void changeHighscore(int newValue);
+	void updateScore(int addScore);
+	void resetScore();
+	
 
 private:
 	PhysBody* ball;
@@ -30,7 +36,9 @@ private:
 	int initial_y;
 	int ball_radius = 7;
 	int health = 5;
-	int score = 000000;
+	int score = 0;
+	int prev_score;
+	int highscore = 0;
 
 	bool ball_launched = false;
 	bool game_over = false;

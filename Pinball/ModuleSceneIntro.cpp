@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
+#include "ModuleUI.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -183,10 +184,10 @@ update_status ModuleSceneIntro::Update()
 
 	}else if(game_over == true)
 	{
-		LOG("aqui");
-		if(App->input->GetKey(SDL_SCANCODE_SPACE) || App->input->GetKey(SDL_SCANCODE_KP_ENTER))
+		LOG("Game_Over");
+		if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_KP_ENTER) == KEY_REPEAT)
 		{
-			LOG("dfasdfdas");
+			LOG("Restarting the game");
 			restartGame();
 		}
 	}
@@ -646,7 +647,10 @@ void ModuleSceneIntro::Shape_Map() {
 void ModuleSceneIntro::restartGame()
 {
 	game_over = false;
-	App->player->changeHealth(5);
+	App->ui->first_round = false;
+	App->player->changePrevScore(App->player->Get_score());
+	App->player->changeHealth(6);
 	App->player->resetScore();
+	App->ui->CleanUp();
+	App->ui->Start();
 }
-

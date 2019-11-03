@@ -54,18 +54,16 @@ update_status ModuleUI::Update()
 
 void ModuleUI::Points()
 {
-	points = App->player->Get_score();
 	char temp[10];
-	_itoa_s(points, temp, 10);
+	_itoa_s(App->player->Get_score(), temp, 10);
 
 	App->font->BlitText(SCREEN_WIDTH / 8, SCREEN_HEIGHT / 40, font_id, temp);
 }
 
 void ModuleUI::Balls()
 {
-	balls = App->player->Get_health();
 	char temp[10];
-	_itoa_s(balls, temp, 10);
+	_itoa_s(App->player->Get_health(), temp, 10);
 
 	App->font->BlitText(SCREEN_WIDTH * 0.75, SCREEN_HEIGHT / 35, font_id, temp);
 
@@ -74,8 +72,24 @@ void ModuleUI::Balls()
 void ModuleUI::End_Screen_Points()
 {
 	char temp[10];
-	_itoa_s(points, temp, 10);
+	_itoa_s(App->player->Get_score(), temp, 10);
 
 	App->font->BlitText(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, font_id, temp);
+
+	if (first_round == true)
+		;
+	else
+	{
+		char temp2[10];
+		_itoa_s(App->player->Get_PrevScore(), temp2, 10);
+
+		char temp3[10];
+		_itoa_s(App->player->Get_Highscore(), temp3, 10);
+
+		App->font->BlitText(SCREEN_WIDTH /2, SCREEN_HEIGHT *0.6, font_id, temp2);
+
+		App->font->BlitText(SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.7, font_id, temp3);
+	}
+	
 }
 

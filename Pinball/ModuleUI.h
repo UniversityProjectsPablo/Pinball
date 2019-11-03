@@ -28,17 +28,8 @@ public:
 
 public:
 
-	SDL_Texture* graphics1 = nullptr;
-	SDL_Texture* graphics2 = nullptr;
-
 	uint font_id;
-	uint balls;
-	uint points;
-	uint timenow;
-
-	bool ScoreAdded = false;
-	uint aux = 0;
-
+	bool first_round = true;
 
 };
 

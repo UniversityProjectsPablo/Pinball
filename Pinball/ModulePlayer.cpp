@@ -67,7 +67,8 @@ update_status ModulePlayer::Update()
 			health--;
 			ball_launched = false;
 			if (health <= 0) //Oups, you lost!
-			{								
+			{	
+				changeHighscore(score);
 				App->scene_intro->game_over = true; //It will change scene from game to game_over
 			}
 			else //You are alive, take another opportunity!
@@ -103,9 +104,32 @@ int ModulePlayer::Get_score()
 	return score;
 }
 
+int ModulePlayer::Get_PrevScore()
+{
+	return prev_score;
+}
+
+int ModulePlayer::Get_Highscore()
+{
+	return highscore;
+}
+
 void ModulePlayer::changeHealth(int newValue)
 {
 	health = newValue;
+}
+
+void ModulePlayer::changePrevScore(int newValue)
+{
+	prev_score = newValue;
+}
+
+void ModulePlayer::changeHighscore(int newValue)
+{
+	if (newValue > highscore)
+		highscore = newValue;
+	else
+		;
 }
 
 void ModulePlayer::updateScore(int addScore)
