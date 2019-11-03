@@ -23,8 +23,8 @@ bool ModulePlayer::Start()
 	ball_texture = App->textures->Load("Assets/Sprites/ball.png");
 
 	//We load the ball
-	initial_x = SCREEN_WIDTH -27;
-	initial_y = SCREEN_HEIGHT -200;
+	initial_x = SCREEN_WIDTH  -27;
+	initial_y = SCREEN_HEIGHT  -200;
 	ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
 
 	return true;

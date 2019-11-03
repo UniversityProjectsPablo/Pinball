@@ -50,8 +50,9 @@ public:
 	PhysBody* createChain(int x, int y, int* points, int size);
 
 	b2World* world;
+	
 private:
-
 	bool debug;
-
+    b2MouseJoint* mouse_joint;
+	b2Body* ground;
 };

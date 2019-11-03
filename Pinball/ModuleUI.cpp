@@ -83,13 +83,12 @@ void ModuleUI::End_Screen_Points()
 		char temp2[10];
 		_itoa_s(App->player->Get_PrevScore(), temp2, 10);
 
-		char temp3[10];
-		_itoa_s(App->player->Get_Highscore(), temp3, 10);
-
 		App->font->BlitText(SCREEN_WIDTH /2, SCREEN_HEIGHT *0.6, font_id, temp2);
-
-		App->font->BlitText(SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.7, font_id, temp3);
 	}
-	
+
+	char temp3[10];
+	_itoa_s(App->player->Get_Highscore(), temp3, 10);
+
+	App->font->BlitText(SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.7, font_id, temp3);
 }
 

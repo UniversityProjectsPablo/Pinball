@@ -134,6 +134,12 @@ update_status ModulePhysics::PostUpdate()
 	// You need to provide your own macro to translate meters to pixels
 	for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 	{
+		bool obj_ins_mouse = false;
+		b2Body* b_mouse = b;
+		b2Vec2 mouse_pos;
+		mouse_pos.x = PIXEL_TO_METERS(App->input->GetMouseX());
+		mouse_pos.y = PIXEL_TO_METERS(App->input->GetMouseY());
+
 		for (b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext())
 		{
 			switch (f->GetType())
@@ -199,12 +205,50 @@ update_status ModulePhysics::PostUpdate()
 			}
 			break;
 			}
+
+			if (obj_ins_mouse == false)
+			{
+				if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
+				{
+					mouse_pos.x = PIXEL_TO_METERS(App->input->GetMouseX());
+					mouse_pos.y = PIXEL_TO_METERS(App->input->GetMouseY());
+					if (f->TestPoint(mouse_pos) && f->GetType() == b2Shape::e_circle)
+					{
+						obj_ins_mouse = true;
+					}
+				}
+			}
+		}
+		b2MouseJointDef def;
+		if (obj_ins_mouse == true)
+		{
+
+			def.bodyA = ground;
+			def.bodyB = b_mouse;
+			def.target = mouse_pos;
+			def.dampingRatio = 0.5f;
+			def.frequencyHz = 2.0f;
+			def.maxForce = 100.0f * b_mouse->GetMass();
+
+			mouse_joint = (b2MouseJoint*)world->CreateJoint(&def);
+		}
+
+		if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_REPEAT && mouse_joint)
+		{
+			mouse_joint->SetTarget(mouse_pos);
+			App->renderer->DrawLine(METERS_TO_PIXELS(mouse_pos.x), METERS_TO_PIXELS(mouse_pos.y), METERS_TO_PIXELS(mouse_joint->GetAnchorB().x), METERS_TO_PIXELS(mouse_joint->GetAnchorB().y), 255, 100, 100);
+		}
+
+		if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_UP && mouse_joint)
+		{
+			obj_ins_mouse = false;
+			world->DestroyJoint(mouse_joint);
+			mouse_joint = nullptr;
 		}
 	}
 
 	return UPDATE_CONTINUE;
 }
-
 
 // Called before quitting
 bool ModulePhysics::CleanUp()
