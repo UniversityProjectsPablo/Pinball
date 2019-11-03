@@ -9,6 +9,7 @@
 
 ## Debug Features
 * F1: All of the Shapes are Drawn
+* F2: Go to Game Over screen
 
 ## Team
 * Pablo Galve: https://github.com/pablogalve
