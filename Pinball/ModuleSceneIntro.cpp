@@ -88,12 +88,13 @@ bool ModuleSceneIntro::Start()
 	
 	//Lights that give points
 	//Green lights
-	green_light1 = App->physics->createCircleSensor(188, 135, 10);	
-	green_light2 = App->physics->createCircleSensor(223, 135, 10);
-	green_light3 = App->physics->createCircleSensor(164, 303, 10);
-	green_light4 = App->physics->createCircleSensor(63, 360, 10);
-	green_light5 = App->physics->createCircleSensor(85, 374, 10);
-	green_light6 = App->physics->createCircleSensor(107, 388, 10);
+	green_light1 = App->physics->createCircleSensor(314, 224, 10);
+	green_light2 = App->physics->createCircleSensor(372, 222, 10);
+	green_light3 = App->physics->createCircleSensor(273, 506, 10);
+	green_light4 = App->physics->createCircleSensor(105, 601, 10);
+	green_light5 = App->physics->createCircleSensor(141, 622, 10);
+	green_light6 = App->physics->createCircleSensor(177, 645, 10);
+	
 
 	//Red lights
 	red_light1 = App->physics->createRectangleSensor(293, 390, 15, 30);
