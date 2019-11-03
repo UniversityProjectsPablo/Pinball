@@ -13,7 +13,7 @@
   * Flippers 
   * Round system
   * Game over implementation
-  * Spring forces at start
+  * Kick the ball at start
   * Teleport when the ball enters a hole
 * Xavier Trillo: https://github.com/xatrilu
   * Rip map and elements

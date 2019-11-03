@@ -67,7 +67,7 @@ bool ModuleSceneIntro::Start()
 
 	//Flipper colliders
 	flipper_left = App->physics->createRectangle(242, 978,100,10, b2_dynamicBody);
-	flipper_right = App->physics->createRectangle(369, 978,90,10, b2_dynamicBody);
+	flipper_right = App->physics->createRectangle(369, 978,100,10, b2_dynamicBody);
 	
 	flipper_left_joint = App->physics->createCircle(200, 974,5, b2_staticBody);
 	flipper_right_joint = App->physics->createCircle(403, 974,5, b2_staticBody);

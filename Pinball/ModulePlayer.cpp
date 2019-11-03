@@ -24,10 +24,11 @@ bool ModulePlayer::Start()
 	ball_texture = App->textures->Load("Assets/Sprites/ball.png");
 
 	//We load the ball
-	initial_x = SCREEN_WIDTH  -27;
-	initial_y = SCREEN_HEIGHT  -200;
+	initial_x = 620;
+	initial_y = 800;
+	current_x = initial_x;
+	current_y = initial_y;
 	ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
-
 	return true;
 }
 
@@ -57,14 +58,11 @@ update_status ModulePlayer::Update()
 
 	if (ball != nullptr)
 	{
-		int pos_x;
-		int pos_y;
-
-		ball->GetPosition(pos_x, pos_y);
-		App->renderer->Blit(ball_texture, pos_x, pos_y);
+		ball->GetPosition(current_x, current_y);
+		App->renderer->Blit(ball_texture, current_x, current_y);
 
 		//Ball is out of the map
-		if (pos_y >= SCREEN_HEIGHT)
+		if (current_y >= SCREEN_HEIGHT)
 		{
 			health--;
 			ball_launched = false;

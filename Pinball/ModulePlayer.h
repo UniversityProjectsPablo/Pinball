@@ -33,6 +33,9 @@ private:
 	
 	int initial_x;
 	int initial_y;
+	int current_x;
+	int current_y;
+
 	int ball_radius = 7;
 	int health = 5;
 	int score = 0;
