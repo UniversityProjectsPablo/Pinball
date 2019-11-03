@@ -39,10 +39,8 @@ Application::Application()
 	AddModule(audio);
 	AddModule(font);
 	AddModule(ui);
-
 	// Scenes
 	AddModule(scene_intro);
-
 	// Player
 	AddModule(player);
 }
