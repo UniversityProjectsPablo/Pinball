@@ -39,7 +39,7 @@ private:
 	int ball_radius = 7;
 	int health = 5;
 	int score = 0;
-	int prev_score;
+	int prev_score = 0;
 	int highscore = 0;
 
 	bool ball_launched = false;

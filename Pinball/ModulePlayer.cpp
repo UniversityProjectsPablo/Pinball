@@ -10,6 +10,7 @@
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
+	score = highscore = prev_score = 0;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -73,6 +74,8 @@ update_status ModulePlayer::Update()
 			}
 			else //You are alive, take another opportunity!
 			{
+				prev_score = score;
+				score = 0;
 				ball = App->physics->createCircle(initial_x, initial_y, ball_radius, b2_dynamicBody);
 			}
 		}
@@ -90,6 +93,9 @@ update_status ModulePlayer::Update()
 	
 		teleport(); //We teleport the ball if it enters the hole
 	}
+
+	if (score > highscore)
+		highscore = score;
 
 	return UPDATE_CONTINUE;
 }
