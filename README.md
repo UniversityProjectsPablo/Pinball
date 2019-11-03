@@ -7,18 +7,13 @@
 * Left/Right arrows to move flippers
 * Down arrow to move the spring and throw the ball at start.
 
+## Debug Features
+* F1: All of the Shapes are Drawn
+
 ## Team
 * Pablo Galve: https://github.com/pablogalve
-  * Music and FX
-  * Flippers 
-  * Round system
-  * Game over implementation
-  * Kick the ball at start
-  * Teleport when the ball enters a hole
 * Xavier Trillo: https://github.com/xatrilu
-  * Rip map and elements
-  * Map collisions
-  * UI showing score and lives 
+   
 
 ## Link to github repository
 https://github.com/UniversityProjectsPablo/Pinball
