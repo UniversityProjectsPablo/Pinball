@@ -13,8 +13,17 @@
 
 ## Team
 * Pablo Galve: https://github.com/pablogalve
+  * Music and FX
+  * Flippers 
+  * Round system
+  * Game over implementation
+  * Kick the ball at start
+  * Teleport when the ball enters a hole
+  * Score system
 * Xavier Trillo: https://github.com/xatrilu
-   
+  * Rip map and elements
+  * Map collisions
+  * UI showing score and lives 
 
 ## Link to github repository
 https://github.com/UniversityProjectsPablo/Pinball

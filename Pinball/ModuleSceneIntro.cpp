@@ -56,7 +56,8 @@ bool ModuleSceneIntro::Start()
 	spring = App->textures->Load("Assets/Sprites/spring.png");
 	flipper_left_tex = App->textures->Load("Assets/Sprites/flipper_left.png");
 	flipper_right_tex = App->textures->Load("Assets/Sprites/flipper_right.png");
-	
+	active_green_bouncer = App->textures->Load("Assets/Sprites/active_green_bouncer.png");
+
 	game_over_scene = App->textures->Load("Assets/Sprites/game_over.png");
 
 	//Joints
@@ -148,7 +149,39 @@ bool ModuleSceneIntro::CleanUp()
 
 update_status ModuleSceneIntro::PreUpdate()
 {
-		
+	if(green_light1_active == true)
+	{
+		App->renderer->Blit(active_green_bouncer, 314,224, NULL);
+		green_light1_active = false;
+	}
+	if (green_light2_active == true)
+	{
+		App->renderer->Blit(active_green_bouncer, 372, 222, NULL);
+		green_light2_active = false;
+	}
+	if (green_light3_active == true)
+	{
+		App->renderer->Blit(active_green_bouncer,273,506, NULL);
+		green_light3_active = false;
+	}
+	if (green_light4_active == true)
+	{
+		App->renderer->Blit(active_green_bouncer, 105,601, NULL);
+		green_light4_active = false;
+	}
+	if (green_light5_active == true)
+	{
+		App->renderer->Blit(active_green_bouncer,141, 622, NULL);
+		green_light5_active = false;
+	}
+	if (green_light6_active == true)
+	{
+		App->renderer->Blit(active_green_bouncer, 177,645, NULL);
+		green_light6_active = false;
+	}
+
+
+
 	if(game_over == false)	
 		App->renderer->Blit(background, 0, 0);
 	else if(game_over == true)
@@ -700,17 +733,35 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 	//We check if we have touched a green light
 	if (bodyA == green_light1)
+	{
 		green_light = true;
+		green_light1_active = true;
+	}
 	if (bodyA == green_light2)
+	{
 		green_light = true;
+		green_light2_active = true;
+	}
 	if (bodyA == green_light3)
+	{
 		green_light = true;
+		green_light3_active = true;
+	}
 	if (bodyA == green_light4)
+	{
 		green_light = true;
+		green_light4_active = true;
+	}
 	if (bodyA == green_light5)
+	{
 		green_light = true;
+		green_light5_active = true;
+	}
 	if (bodyA == green_light6)
+	{
 		green_light = true;
+		green_light6_active = true;
+	}
 
 	//We check if we have collided with a red light
 	if (bodyA == red_light1)

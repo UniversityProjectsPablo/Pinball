@@ -37,12 +37,19 @@ private:
 	PhysBody* flipper_right_joint;
 
 	//Light that give points
-	PhysBody* green_light1;
+	PhysBody* green_light1;	
 	PhysBody* green_light2;
 	PhysBody* green_light3;
 	PhysBody* green_light4;
 	PhysBody* green_light5;
 	PhysBody* green_light6;
+
+	bool green_light1_active;
+	bool green_light2_active;
+	bool green_light3_active;
+	bool green_light4_active;
+	bool green_light5_active;
+	bool green_light6_active;
 
 	PhysBody* red_light1;
 	PhysBody* red_light2;
@@ -54,6 +61,16 @@ private:
 	PhysBody* red_light8;
 	PhysBody* red_light9;
 
+	bool red_light1_active;
+	bool red_light2_active;
+	bool red_light3_active;
+	bool red_light4_active;
+	bool red_light5_active;
+	bool red_light6_active;
+	bool red_light7_active;
+	bool red_light8_active;
+	bool red_light9_active;
+
 	Animation spring_relaxation;
 	Animation spring_compression;
 
@@ -62,6 +79,7 @@ private:
 	SDL_Texture* game_over_scene = nullptr;
 	SDL_Texture* flipper_left_tex = nullptr;
 	SDL_Texture* flipper_right_tex = nullptr;
+	SDL_Texture* active_green_bouncer = nullptr;
 
 	SDL_Texture* circle;
 	SDL_Texture* box;
