@@ -86,6 +86,26 @@ bool ModuleSceneIntro::Start()
 	flipper_joint_right = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipper_joint_def_right);
 	flipper_joint_left = (b2RevoluteJoint*)App->physics->world->CreateJoint(&flipper_joint_def_left);
 	
+	//Lights that give points
+	//Green lights
+	green_light1 = App->physics->createCircleSensor(188, 135, 10);	
+	green_light2 = App->physics->createCircleSensor(223, 135, 10);
+	green_light3 = App->physics->createCircleSensor(164, 303, 10);
+	green_light4 = App->physics->createCircleSensor(63, 360, 10);
+	green_light5 = App->physics->createCircleSensor(85, 374, 10);
+	green_light6 = App->physics->createCircleSensor(107, 388, 10);
+
+	//Red lights
+	red_light1 = App->physics->createRectangleSensor(293, 390, 15, 30);
+	red_light2 = App->physics->createRectangleSensor(335, 390, 15, 30);
+	red_light3 = App->physics->createRectangleSensor(380, 390, 15, 30);
+	red_light4 = App->physics->createRectangleSensor(425, 390, 15, 30);
+	red_light5 = App->physics->createRectangleSensor(130, 830, 15, 30);
+	red_light6 = App->physics->createRectangleSensor(470, 830, 15, 30);
+	red_light7 = App->physics->createRectangleSensor(258, 805, 15, 30);
+	red_light8 = App->physics->createRectangleSensor(300, 805, 15, 30);
+	red_light9 = App->physics->createRectangleSensor(348, 805, 15, 30);
+
 	return ret;
 }
 
@@ -653,4 +673,28 @@ void ModuleSceneIntro::restartGame()
 	App->player->resetScore();
 	App->ui->CleanUp();
 	App->ui->Start();
+}
+
+void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+{
+	bool green_light = false;
+	LOG("asu");
+	//We check if we have touched a green light
+	if (bodyA == green_light1)
+		green_light = true;
+	if (bodyA == green_light2)
+		green_light = true;
+	if (bodyA == green_light3)
+		green_light = true;
+	if (bodyA == green_light4)
+		green_light = true;
+	if (bodyA == green_light5)
+		green_light = true;
+	if (bodyA == green_light6)
+		green_light = true;
+
+	if(green_light == true)
+	{
+		App->player->updateScore(10); //We add x points
+	}
 }
