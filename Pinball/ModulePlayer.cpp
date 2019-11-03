@@ -24,7 +24,7 @@ bool ModulePlayer::Start()
 	ball_texture = App->textures->Load("Assets/Sprites/ball.png");
 
 	//We load the ball
-	initial_x = 620;
+	initial_x = 625;
 	initial_y = 800;
 	current_x = initial_x;
 	current_y = initial_y;
@@ -59,7 +59,7 @@ update_status ModulePlayer::Update()
 	if (ball != nullptr)
 	{
 		ball->GetPosition(current_x, current_y);
-		App->renderer->Blit(ball_texture, current_x, current_y);
+		App->renderer->Blit(ball_texture, current_x - 5, current_y - 2);
 
 		//Ball is out of the map
 		if (current_y >= SCREEN_HEIGHT)
