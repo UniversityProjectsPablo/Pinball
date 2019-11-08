@@ -24,7 +24,6 @@
   * Rip map and elements
   * Map collisions
   * UI showing score and lives 
-  * F1: All the Shapes are Drawn
 
 ## Link to github repository
 https://github.com/UniversityProjectsPablo/Pinball
